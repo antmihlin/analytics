@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import AnalyticsFilters from "../components/AnalyticsFilters.vue";
+import AnalyticsGraph from "../components/AnalyticsGraph.vue";
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <AnalyticsFilters />
+    <AnalyticsGraph />
   </main>
 </template>
