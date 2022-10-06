@@ -1,7 +1,47 @@
 # analytics
 
-This template should help get you started developing with Vue 3 in Vite.
+A dashboard to display oil prices.
+Data can be filtered by dates.
 
+![Application sample](./readme-example.png "Optional title")
+
+## Setup
+
+Clone the project.
+
+Run in termital to install all packages:
+`npm install`
+
+To start development mode:
+`npm run dev`
+
+After that fro terminal open Local environment link
+
+## Filters
+
+Filter accepts a range of dates. If too many items fetched they will be __grouped__.
+
+## Tech used
+
+- VueJs 3
+- [Pinia](https://pinia.vuejs.org/) - for state management
+- [PrimeVue](https://www.primefaces.org/) - UI framework
+- [Axios](https://www.npmjs.com/package/axios) - http requests handling
+- [vue-chart-3](https://vue-chart-3.netlify.app/) - for line chart
+
+## Data
+
+Data taken from [kapsarc](https://datasource.kapsarc.org/)
+
+## Possible improvements
+
+The app can be improved further. Here are some parts to improve
+- Write unit tests
+- Improve typization. Types set not in all places
+- Empisize more accessibility
+
+## Vue docs
+---
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
