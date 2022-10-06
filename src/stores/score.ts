@@ -1,13 +1,10 @@
 import { defineStore } from "pinia";
+import axios from "axios";
 
-interface ScoreParams {
-  from?: string;
-  to?: string;
-}
+import { setParams } from "@/helpers/stats.helper";
+import type { Score, ScoreParams } from "@/models/score.data";
 
-interface Score {
-  title?: string;
-}
+const apiEndpoint = "https://datasource.kapsarc.org/api/records/1.0/search/?dataset=spot-prices-for-crude-oil-and-petroleum-products";
 
 export const useScoreStore = defineStore("score", {
   state: () => ({
@@ -16,14 +13,21 @@ export const useScoreStore = defineStore("score", {
       | undefined,
     // scores: undefined as Score[] | undefined
   }),
-  getters: {
-    // getScores(state) {
-    //   return state.scores;
-    // }
-  },
   actions: {
-    fetchScores(data: ScoreParams) {
+    async fetchScores(data: ScoreParams) {
+      const date = setParams(data);
+
+      const params = {
+        sort: '-period',
+        facet: 'period',
+        q: date
+      };
+      const scores = await axios.get(apiEndpoint, {params});
+      console.log("🚀 ~ file: score.ts ~ line 30 ~ fetchScores ~ scores", scores)
+
       this.scores?.push({ title: "sfgweger" });
     },
   },
 });
+
+

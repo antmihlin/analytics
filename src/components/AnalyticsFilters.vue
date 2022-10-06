@@ -12,12 +12,13 @@ function fetchScores(data) {
 }
 
 function onDataSelectHandler() {
-  fetchScores();
+  fetchScores({ from: dataFrom.value, to: dataTo.value });
 }
 
 function clearDates() {
   dataFrom.value = null;
   dataTo.value = null;
+  fetchScores({ from: dataFrom.value, to: dataTo.value });
 }
 </script>
 
@@ -31,6 +32,7 @@ function clearDates() {
             <Calendar
               inputId="dataFrom"
               v-model="dataFrom"
+              dateFormat="yy/mm/dd"
               @date-select="onDataSelectHandler($event)"
               :showIcon="true"
             />
@@ -40,12 +42,17 @@ function clearDates() {
             <Calendar
               inputId="dataTo"
               v-model="dataTo"
+              dateFormat="yy/mm/dd"
               @date-select="onDataSelectHandler($event)"
               :showIcon="true"
             />
           </div>
           <div class="flex align-self-end">
-            <Button @click="clearDates" icon="pi pi-times" />
+            <Button
+              :disabled="!dataFrom && !dataTo"
+              @click="clearDates"
+              icon="pi pi-times"
+            />
           </div>
         </div>
       </template>
