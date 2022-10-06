@@ -4,8 +4,7 @@ import axios from "axios";
 import { mapStats, setParams } from "@/helpers/stats.helper";
 import type { Score, ScoreParams } from "@/models/score.data";
 
-const apiEndpoint =
-  "https://datasource.kapsarc.org/api/records/1.0/search/?dataset=spot-prices-for-crude-oil-and-petroleum-products";
+const apiEndpoint = import.meta.env.VITE_STATS_API;
 
 export const useScoreStore = defineStore("score", {
   state: () => ({
