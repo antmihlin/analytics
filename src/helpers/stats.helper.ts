@@ -35,3 +35,11 @@ export function setParams(data: ScoreParams): string {
   }
   return "";
 }
+
+export function mapStats(data: any[]) {
+  const records = data?.map( r => r?.fields?.cushing_ok_wti_spot_price_fob_daily );
+
+  const labels = data?.map( r =>r?.fields?.period );
+
+  return { datasets: records, labels };
+}

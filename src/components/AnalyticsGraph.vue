@@ -6,28 +6,26 @@ import { Chart, registerables } from "chart.js";
 
 const store = useScoreStore();
 
-const scores = computed(() => store.scores);
+// const stats = computed(() => store.stats);
+const labels = computed(() => store.labels);
+const datasets = computed(() => store.datasets);
 
 Chart.register(...registerables);
 
-const dataValues = ref([30, 40, 60, 70, 5]);
-
-const testData = {
-  labels: ["Paris", "Nîmes", "Toulon", "Perpignan", "Autre"],
+const testData = computed(() => ({
+  labels: labels.value,
   datasets: [
     {
-      data: dataValues.value,
-      backgroundColor: ["#77CEFF", "#0079AF", "#123E6B", "#97B0C4", "#A5C8ED"],
+      data: datasets.value,
     },
   ],
-};
+}));
 </script>
 
 <template>
   <div class="graph-wrap">
     <Card>
       <template #content>
-        {{ JSON.stringify(scores) }}
         <LineChart :chartData="testData" />
       </template>
     </Card>
