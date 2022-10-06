@@ -4,12 +4,21 @@ import { useScoreStore } from "@/stores/score";
 
 const store = useScoreStore();
 
+const dataFrom = ref(null);
+const dataTo = ref(null);
+
 function fetchScores(data) {
   store.fetchScores(data);
 }
 
-const dataFrom = ref(null);
-const dataTo = ref(null);
+function onDataSelectHandler() {
+  fetchScores();
+}
+
+function clearDates() {
+  dataFrom.value = null;
+  dataTo.value = null;
+}
 </script>
 
 <template>
@@ -19,11 +28,24 @@ const dataTo = ref(null);
         <div class="flex flex-row flex-wrap justify-content-end gap-2">
           <div class="flex flex-column">
             <label for="dataFrom">From</label>
-            <Calendar inputId="dataFrom" v-model="dataFrom" :showIcon="true" />
+            <Calendar
+              inputId="dataFrom"
+              v-model="dataFrom"
+              @date-select="onDataSelectHandler($event)"
+              :showIcon="true"
+            />
           </div>
           <div class="flex flex-column">
             <label for="dataTo">To</label>
-            <Calendar inputId="dataTo" v-model="dataTo" :showIcon="true" />
+            <Calendar
+              inputId="dataTo"
+              v-model="dataTo"
+              @date-select="onDataSelectHandler($event)"
+              :showIcon="true"
+            />
+          </div>
+          <div class="flex align-self-end">
+            <Button @click="clearDates" icon="pi pi-times" />
           </div>
         </div>
       </template>
