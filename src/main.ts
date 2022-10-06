@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config';
-import Dialog from 'primevue/dialog';
+// import Chart from 'primevue/chart';
+import ColorPicker from 'primevue/colorpicker';
 import Card from "primevue/card";
 
 import App from './App.vue'
@@ -17,7 +18,8 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(PrimeVue);
-app.component('Dialog', Dialog);
+app.component('ColorPicker', ColorPicker);
+// app.component('Chart', Chart);
 app.component('Card', Card);
 
 app.mount('#app')

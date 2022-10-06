@@ -6,6 +6,7 @@ import AnalyticsGraph from "../components/AnalyticsGraph.vue";
 <template>
   <main>
     <AnalyticsFilters />
+    <br />
     <AnalyticsGraph />
   </main>
 </template>
